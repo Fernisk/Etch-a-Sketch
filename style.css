@@ -1,0 +1,36 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    min-width: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    border: 3px black solid;
+}
+.container {
+    margin: 50px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.firstRow, .secondRow, .thirdRow, .fourthRow {
+    padding: 1px;
+    flex: 1;
+    display: flex;
+}
+.cube {
+    padding: 10px;
+    flex: 0;
+    border: 1px black solid;
+}
+
