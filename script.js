@@ -5,19 +5,6 @@ const sketch = () => {
     const containerDiv = document.createElement("div");
     containerDiv.classList.add("container");
     body.appendChild(containerDiv);
-
-    const firstRow = document.createElement("div");
-    firstRow.classList.add("firstRow");
-    containerDiv.appendChild(firstRow);
-    const secondRow = document.createElement("div");
-    secondRow.classList.add("secondRow");
-    containerDiv.appendChild(secondRow);
-    const thirdRow = document.createElement("div");
-    thirdRow.classList.add("thirdRow");
-    containerDiv.appendChild(thirdRow);
-    const fourthRow = document.createElement("div");
-    fourthRow.classList.add("fourthRow");
-    containerDiv.appendChild(fourthRow);
     
     //function to create cube
 
@@ -53,22 +40,37 @@ const sketch = () => {
        }
 
        //function will create n number of rows, with n number of boxes
-       const createRow = (n, column) => {
+       const createBoxContainer = (n, column) => {
             //loop to create n number of rows, with 4 boxes
             //create div
-            //add class of row
+            //add class of boxContainer
             //append to parentContainer
         for (let i = 0; i < n; i++){
-           const row = document.createElement("div");
-           row.classList.add("row"); 
-           createBox(1, row);
-           column.appendChild(row)
+           const boxContainer = document.createElement("div");
+           boxContainer.classList.add("boxContainer"); 
+           createBox(1, boxContainer);
+           column.appendChild(boxContainer);
         }
        }
-       createRow(4, firstRow);
-       createRow(4, secondRow);
-       createRow(4, thirdRow);
-       createRow(4, fourthRow);
+       //function will create the grid
+       const createGrid = (n, grid) => {
+           //loop - create each row 
+           //create div element
+           //add class of row
+           //append to containerDiv
+           for (let i = 0; i < n; i++){
+               const gridRow = document.createElement("div");
+               gridRow.classList.add("row");
+               createBoxContainer(4, gridRow);
+               grid.appendChild(gridRow);
+           }
+       }
+    //    createRow(4, firstRow);
+    //    createRow(4, secondRow);
+    //    createRow(4, thirdRow);
+    //    createRow(4, fourthRow);
+
+       createGrid(4, containerDiv);
 
     //create second layer 4x4
 
