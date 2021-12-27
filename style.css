@@ -10,6 +10,8 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 div {
@@ -18,19 +20,38 @@ div {
     border: 3px black solid;
 }
 .container {
-    margin: 50px;
+    width: 50vh;
+    height: 50vh;
     padding: 5px;
     display: flex;
+    align-self: center;
+    flex-direction: column;
     flex-wrap: wrap;
 }
+
 .firstRow, .secondRow, .thirdRow, .fourthRow {
     padding: 1px;
-    flex: 1;
+    flex: auto;
     display: flex;
 }
+.row{
+    padding: 1px;
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.box {
+    border: 1px black solid;
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+}
+
+
 .cube {
     padding: 10px;
-    flex: 0;
+    flex: 1 0 auto;
     border: 1px black solid;
 }
 
