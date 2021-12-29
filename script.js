@@ -78,22 +78,21 @@ const sketch = () => {
        //function will change the color when click and drag
                 box.addEventListener("mousedown", (e) => {
                     click = true;
+                    
                 });
                 box.addEventListener("mouseup", (e) => {
                     if(click){
                         click = false;
-
                     }
                 });
                 box.addEventListener("mousemove", (e) => {
                     if (click){
-                        box.style.backgroundColor = "black"
-                        
+                        box.style.backgroundColor = randomRGB();
                     }
                 });
                 box.addEventListener("click", (e) => {
                     if(box.style.backgroundColor === "" || box.style.backgroundColor === "white"){
-                        box.style.backgroundColor = "black";
+                        box.style.backgroundColor = randomRGB();
                     }else {
                         box.style.backgroundColor = "white";
                     }
@@ -103,7 +102,19 @@ const sketch = () => {
 
 
         }
-        
+
+       //randomRGB() will help paint() create random colors  
+       const randomRGB = () => {
+           //randomize r, g, b
+           let r = Math.floor(Math.random() * 256);
+           let g = Math.floor(Math.random() * 256);
+           let b = Math.floor(Math.random() * 256);
+           let RGBCOLOR = `rgb(${r},${g},${b})`;
+           return RGBCOLOR;
+       }
+       
+       
+       
 
         //creating div for the menu next to the sketchpad
         const menuDiv = document.createElement("div");
