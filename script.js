@@ -34,12 +34,12 @@ const sketch = () => {
           for (let i = 0; i < n; i++){
            const outerBox = document.createElement("box");   
            outerBox.classList.add("box")
-           createCube(16, outerBox);
+           createCube(n, outerBox);
             row.appendChild(outerBox);
           }
        }
 
-       //function will create n number of rows, with n number of boxes
+       //function will create n number of boxes
        const createBoxContainer = (n, column) => {
             //loop to create n number of rows, with 4 boxes
             //create div
@@ -61,19 +61,95 @@ const sketch = () => {
            for (let i = 0; i < n; i++){
                const gridRow = document.createElement("div");
                gridRow.classList.add("row");
-               createBoxContainer(4, gridRow);
+               createBoxContainer(n, gridRow);
                grid.appendChild(gridRow);
            }
        }
-    //    createRow(4, firstRow);
-    //    createRow(4, secondRow);
-    //    createRow(4, thirdRow);
-    //    createRow(4, fourthRow);
 
-       createGrid(4, containerDiv);
+       //paint() will make every cube div to change color
+       //when it hover over each one  
+        
+        const paint = () => {
+        const currentBox = document.querySelectorAll(".cube");
+        
+                //variable to hold click boolean
+                let click = false;
+            currentBox.forEach(box => {
+       //function will change the color when click and drag
+                box.addEventListener("mousedown", (e) => {
+                    click = true;
+                });
+                box.addEventListener("mouseup", (e) => {
+                    if(click){
+                        click = false;
 
-    //create second layer 4x4
+                    }
+                });
+                box.addEventListener("mousemove", (e) => {
+                    if (click){
+                        box.style.backgroundColor = "black"
+                        
+                    }
+                });
+                box.addEventListener("click", (e) => {
+                    if(box.style.backgroundColor === "" || box.style.backgroundColor === "white"){
+                        box.style.backgroundColor = "black";
+                    }else {
+                        box.style.backgroundColor = "white";
+                    }
 
-    //create third layer 16x16
+                })
+            });
+
+
+        }
+        
+
+        //creating div for the menu next to the sketchpad
+        const menuDiv = document.createElement("div");
+        menuDiv.classList.add("menuDiv");
+        body.appendChild(menuDiv);
+        //reset() will reset the grid by a button and create a new clean one
+            //(making sure is the same grid you specified)
+        const reset = () => {
+                //create button
+             const rBtn = document.createElement("button"); 
+             rBtn.textContent = "reset";
+             rBtn.classList.add("resetButton");
+             menuDiv.appendChild(rBtn);
+             //look for button
+             const resetButton = document.querySelector(".resetButton");
+             //when pressed prompt the user (How many squares per side you want)?
+             //make sure to convert it to a number
+             //limit it to 100 boxes
+             //delete the previous grid
+             //create new grid with user input
+             resetButton.addEventListener("click", () => {
+             let resetInput = Number(prompt("How many squares per side?"))
+             deleteGrid(containerDiv);
+             if (resetInput < 1 || resetInput > 100){
+                 alert("error: type a number between 0 and 100");
+                 window.location.reload();
+                 return
+             }
+             createGrid(resetInput, containerDiv);
+             paint();
+             });
+
+            }
+       
+       //deleteGrid() will help reset() remove all child elements
+       //before creating a new grid 
+       const deleteGrid = (gridContainer) => {
+         while (gridContainer.firstChild){
+             gridContainer.removeChild(gridContainer.firstChild);
+         }
+       }
+
+
+       createGrid(16, containerDiv)
+       paint();
+       reset();
+
 }
 sketch();

@@ -12,6 +12,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
+    /* gap between sketch box and right side div */
+    gap: 5em;
 }
 
 div {
@@ -21,11 +23,11 @@ div {
 .container {
     width: 70vh;
     height: 70vh;
-    padding: 5px;
     display: flex;
     align-self: center;
     flex-direction: column;
     flex-wrap: wrap;
+    border: 1px black solid;
 }
 
 .row{
@@ -47,6 +49,13 @@ div {
 
 .cube {
    flex:1 1 35px; 
-    border: 1px black solid;
+    border: 1px rgb(221, 221, 221) solid;
 }
-
+.menuDiv {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.resetButton {
+   font-size: 20px; 
+}
