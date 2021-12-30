@@ -97,12 +97,12 @@ const sketch = () => {
                 });
                 box.addEventListener("mousemove", (e) => {
                     if (click){
-                        box.style.backgroundColor = randomRGB();
+                        box.style.backgroundColor = colorChoice();
                     }
                 });
                 box.addEventListener("click", (e) => {
                     if(box.style.backgroundColor === "" || box.style.backgroundColor === "white"){
-                        box.style.backgroundColor = randomRGB();
+                        box.style.backgroundColor = colorChoice();
                     }else {
                         box.style.backgroundColor = "white";
                     }
@@ -163,7 +163,7 @@ const sketch = () => {
             const upperMenuDiv = document.createElement("div");
             upperMenuDiv.classList.add("upperMenuDiv");
             menuDiv.appendChild(upperMenuDiv);
-        //randomButton() will give paint() randomRGB colors if on, or black only if off
+        //randomButton() will create a checkbox for colorChoice()
         const randomButton = () => {
             //create button
             const checkbox = document.createElement("input");
@@ -190,7 +190,17 @@ const sketch = () => {
             
 
         }
-        randomButton();
+
+        //colorChoice() will determine if checkbox is checked (randomRGB), or unchecked (black only)
+        //and will return the color;
+        const colorChoice = () => {
+            if (document.getElementById('checkbox').checked){
+                return randomRGB();
+            } else {
+                return "black";
+            }
+
+        }
        
        //deleteGrid() will help reset() remove all child elements
        //before creating a new grid 
@@ -202,6 +212,7 @@ const sketch = () => {
 
 
        createGrid(16, containerDiv)
+       randomButton();
        paint();
        reset();
 
