@@ -14,6 +14,21 @@ body {
     justify-content: center;
     /* gap between sketch box and right side div */
     gap: 5em;
+    /* gradient background */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 65%, rgba(0,212,255,1) 100%);
+}
+.page-title {
+    margin: 0 auto;
+    color: blanchedalmond;
+    font-size: 50px;
+}
+.leftContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    gap: 3em;
 }
 
 div {
@@ -27,7 +42,9 @@ div {
     align-self: center;
     flex-direction: column;
     flex-wrap: wrap;
-    border: 1px black solid;
+    border: 20px rgb(26, 23, 23) solid;
+    border-radius: 20px;
+    background-color: white;
 }
 
 .row{
@@ -55,7 +72,25 @@ div {
     display: flex;
     flex-direction: column;
     align-self: center;
+    gap: 1em;
 }
+.upperMenuDiv{
+    display: flex;
+    gap: 1em;
+}
+#checkbox{
+    align-self: center;
+}
+.labelText {
+    font-size: 20px;
+    color: blanchedalmond;
+}
+
 .resetButton {
+    border-style: none;
+    border-radius: 20px;
    font-size: 20px; 
+   background-color: black;
+   color: blanchedalmond;
+   text-transform: uppercase;
 }

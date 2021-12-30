@@ -1,11 +1,21 @@
 // logic 
 const sketch = () => {
     const body = document.querySelector("body");
+    
+    //create div for box content and title
+    const leftPage = document.createElement("div");
+    leftPage.classList.add("leftContent");
+    body.appendChild(leftPage);
+    //create title
+    const title = document.createElement("h1");
+    title.classList.add("page-title");
+    title.textContent = "Etch-a-Sketch"
+    leftPage.appendChild(title);   
     //create first layer
     const containerDiv = document.createElement("div");
     containerDiv.classList.add("container");
-    body.appendChild(containerDiv);
-    
+    leftPage.appendChild(containerDiv);
+
     //function to create cube
 
         //create a div
@@ -148,6 +158,39 @@ const sketch = () => {
              });
 
             }
+            
+            //creating upperMenuDiv
+            const upperMenuDiv = document.createElement("div");
+            upperMenuDiv.classList.add("upperMenuDiv");
+            menuDiv.appendChild(upperMenuDiv);
+        //randomButton() will give paint() randomRGB colors if on, or black only if off
+        const randomButton = () => {
+            //create button
+            const checkbox = document.createElement("input");
+            //assigning the attributes
+            checkbox.type = "checkbox";
+            checkbox.name = "name";
+            checkbox.value = "value";
+            checkbox.id = "checkbox";
+
+            //creating label for checkbox
+            const label = document.createElement("label");
+            //assign attributes for label
+            label.htmlFor = "checkbox";
+            //create text for label
+            const p = document.createElement("p");
+            p.classList.add("labelText");
+            p.textContent = "Random RGB Colors"
+            //append new text to label
+            label.appendChild(p);
+            //append checkbox to upperMenuDiv
+            //apend label to upperMenuDiv
+            upperMenuDiv.appendChild(checkbox);
+            upperMenuDiv.appendChild(label);
+            
+
+        }
+        randomButton();
        
        //deleteGrid() will help reset() remove all child elements
        //before creating a new grid 
